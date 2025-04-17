@@ -1,0 +1,156 @@
+/* BASE STYLES */
+body {
+    font-family: 'Inter', sans-serif;
+    background-color: #fff;
+    color: #333;
+    line-height: 1.6;
+    margin: 0;
+    padding: 0;
+  }
+  
+  main.container {
+    max-width: 960px;
+    margin: 60px auto;
+    padding: 0 20px;
+  }
+  
+  /* PROJECT TITLE + SHORT DESCRIPTION */
+  .project-hero h1 {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: #222;
+    margin-bottom: 10px;
+  }
+  
+  .project-hero .short-desc {
+    font-size: 1.15rem;
+    color: #666;
+    margin-bottom: 30px;
+  }
+  
+  /* IMAGE SLIDER */
+  .image-slider {
+    position: relative;
+    overflow: hidden;
+    border-radius: 12px;
+    margin-bottom: 40px;
+  }
+  
+  .image-slider .slide {
+    display: none; /* hide all slides initially */
+  }
+  
+  .image-slider .slide.active {
+    display: block; /* only the active slide is shown */
+  }
+  
+  .image-slider img {
+    width: 100%;
+    height: auto;
+    border-radius: 12px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.05); /* soft shadow for depth */
+  }
+  
+  /* Slider navigation buttons */
+  .image-slider button.prev,
+  .image-slider button.next {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: #222;
+    color: #fff;
+    border: none;
+    font-size: 20px;
+    padding: 8px 12px;
+    cursor: pointer;
+    border-radius: 50%;
+    z-index: 1;
+  }
+  
+  .image-slider button.prev {
+    left: 10px;
+  }
+  
+  .image-slider button.next {
+    right: 10px;
+  }
+  
+  /* TECH STACK SECTION */
+  .tech-stack {
+    margin: 30px 0;
+  }
+  
+  .tech-stack h3 {
+    font-size: 1.3rem;
+    color: #444;
+    margin-bottom: 10px;
+  }
+  
+  .tech-stack .tech {
+    display: inline-block;
+    background-color: #f0f0f0;
+    color: #333;
+    padding: 8px 16px;
+    margin: 5px 8px 5px 0;
+    border-radius: 30px; /* pill shape */
+    font-size: 0.9rem;
+    font-weight: 500;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+  }
+  
+  /* DESCRIPTION */
+  .description {
+    margin-top: 30px;
+  }
+  
+  .description p {
+    font-size: 1rem;
+    color: #444;
+  }
+  
+  /* BUTTONS */
+  .btn {
+    display: inline-block;
+    margin-top: 30px;
+    padding: 10px 20px;
+    text-decoration: none;
+    border-radius: 8px;
+    font-weight: 600;
+    transition: all 0.3s ease; /* smooth hover effect */
+    background-color: #eee;
+    color: #333;
+  }
+  
+  .btn:hover {
+    background-color: #ccc;
+  }
+  
+  /* Primary style button */
+  .btn.primary {
+    background-color: #ffd500; /* bright yellow */
+    color: #000;
+    margin-right: 10px;
+  }
+  
+  .btn.primary:hover {
+    background-color: #e6c700;
+  }
+  
+  /* RESPONSIVE */
+  @media (max-width: 768px) {
+    .project-hero h1 {
+      font-size: 2rem; /* scale down title on mobile */
+    }
+  
+    .tech-stack .tech {
+      font-size: 0.85rem;
+      padding: 6px 12px;
+    }
+  
+    .image-slider button.prev,
+    .image-slider button.next {
+      font-size: 16px;
+      padding: 6px 10px;
+    }
+  }
+  

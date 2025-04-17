@@ -1,0 +1,107 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{{ project['name'] }}</title>
+
+    <!-- STYLE -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/project_detail.css') }}">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+  </head>
+
+  <body>
+    <main class="container">
+      <!-- Project Title & Short Description -->
+      <section class="project-hero">
+        <h1>{{ project['name'] }}</h1>
+        <p class="short-desc">{{ project['short_description'] }}</p>
+      </section>
+
+      <!-- Image Slider -->
+      <section class="image-slider">
+        <div class="slides-wrapper">
+          {% for image in project['images']['additional_images'] %}
+            <div class="slide">
+              <img src="{{ url_for('static', filename=image) }}" alt="{{ project['name'] }}">
+            </div>
+          {% endfor %}
+        </div>
+      
+        <div class="dots">
+          {% for image in project['images']['additional_images'] %}
+            <span class="dot" data-index="{{ loop.index0 }}"></span>
+          {% endfor %}
+        </div>
+        
+      </section>
+
+      <!-- Tech Stack -->
+      <section class="tech-stack">
+        <h3>Tech Stack</h3>
+        {% for tech in project['Tech Stack'] %}
+          <span class="tech">{{ tech }}</span>
+        {% endfor %}
+      </section>
+
+      <!-- View Project Link -->
+      {% if project.link %}
+        <a href="{{ project.link }}" class="btn primary" target="_blank">View Project</a>
+      {% endif %}
+
+      <!-- Full Description -->
+      <section class="description">
+        <p>{{ project['description'] }}</p>
+      </section>
+
+      <!-- Back to Home -->
+      <a href="/" class="btn">← Back to Home</a>
+    </main>
+
+    <!-- Slider Script -->
+    <script>
+      // Initialize the current slide index
+      let currentSlide = 0;
+    
+      // Select all slide elements and dot indicators
+      const slides = document.querySelectorAll(".slide");
+      const dots = document.querySelectorAll(".dot");
+    
+      // Function to display a specific slide and highlight its corresponding dot
+      function showSlide(index) {
+        slides.forEach((slide, i) => {
+          // Toggle 'active' class to show or hide slide
+          slide.classList.toggle("active", i === index);
+        });
+        dots.forEach((dot, i) => {
+          // Toggle 'active' class to highlight the corresponding dot
+          dot.classList.toggle("active", i === index);
+        });
+      }
+    
+      // Function to automatically change slides at intervals
+      function autoSlide() {
+        // Move to the next slide (loop back to 0 if at the end)
+        currentSlide = (currentSlide + 1) % slides.length;
+        showSlide(currentSlide);
+      }
+    
+      // Add click event listeners to dots for manual slide selection
+      dots.forEach(dot => {
+        dot.addEventListener("click", () => {
+          // Get index from data attribute and show the corresponding slide
+          currentSlide = parseInt(dot.dataset.index);
+          showSlide(currentSlide);
+        });
+      });
+    
+      // Initially display the first slide
+      showSlide(currentSlide);
+    
+      // Start automatic slide change every 1.5 seconds
+      setInterval(autoSlide, 1500);
+    </script>
+    
+    
+  </body>
+</html>

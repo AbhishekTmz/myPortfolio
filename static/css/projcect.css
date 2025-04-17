@@ -1,0 +1,133 @@
+/* Grid Layout */
+.project-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr); /* Two columns by default */
+    gap: 1.5rem;
+    padding: 0 1rem;
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
+.project-card {
+    background: #111;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+    transition: all 0.3s ease;
+    display: grid;
+    grid-template-columns: 0.8fr 1.2fr; /* Image : Content ratio */
+    min-height: 200px;
+}
+
+/* Image Section (Left) */
+.card-image {
+    position: relative;
+    overflow: hidden;
+}
+
+.card-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Ensures full coverage without distortion */
+    transition: transform 0.3s ease;
+}
+
+/* Content Section (Right) */
+.card-content {
+    padding: 1.2rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+/* Text Elements */
+.project-title {
+    color: #fff;
+    font-size: 1.3rem;
+    margin-bottom: 0.8rem;
+}
+
+.project-description {
+    color: #888;
+    line-height: 1.5;
+    font-size: 0.9rem;
+    margin-bottom: auto;
+}
+
+/* Compact Button */
+.project-btn {
+    align-self: center;     /* Center horizontally */
+    margin: auto;           /* Center vertically & horizontally */
+    background: transparent;
+    color: white;
+    padding: 0.5rem 1.2rem;
+    border-radius: 18px;
+    text-decoration: none;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    border: none;
+    font-size: 0.85rem;
+    display: flex;
+    justify-content: center;
+    width: max-content;     /* Prevents button from stretching */
+}
+
+/* Hover Effects */
+.project-card:hover {
+    transform: translateY(-5px); /* Slight lift on hover */
+    box-shadow: 0 8px 15px rgba(255, 215, 0, 0.1);
+}
+
+.project-card:hover img {
+    transform: scale(1.05); /* Zoom image slightly on hover */
+}
+
+.project-btn:hover {
+    background: white;
+    color: black;
+    transform: translateY(-1px);
+    box-shadow: 0 2px 8px rgba(255, 215, 0, 0.3);
+    text-decoration: none;
+}
+
+/* Responsive Design */
+@media (max-width: 1024px) {
+    .project-grid {
+        gap: 1rem;
+    }
+
+    .project-card {
+        grid-template-columns: 1fr 1.5fr; /* Adjust layout for medium screens */
+        min-height: 180px;
+    }
+}
+
+@media (max-width: 768px) {
+    .project-grid {
+        grid-template-columns: 1fr; /* Stack cards vertically */
+    }
+
+    .project-card {
+        grid-template-columns: 1fr;
+        grid-template-rows: 200px auto; /* Image above content */
+    }
+
+    .card-image {
+        height: 200px;
+    }
+}
+
+@media (max-width: 480px) {
+    .project-card {
+        grid-template-rows: 180px auto;
+    }
+
+    .card-image {
+        height: 180px;
+    }
+
+    .project-btn {
+        width: 100%;            /* Full-width button on small screens */
+        text-align: center;
+    }
+}
