@@ -1,7 +1,8 @@
 # Import necessary modules
 from flask import Flask, render_template
 from project_data import projects  # Importing project data from external file
-from skills import skills          # Importing skills data from external file
+from skills import skills 
+import os         # Importing skills data from external file
 
 # Create the Flask application instance
 app = Flask(__name__)
@@ -27,4 +28,5 @@ def project_detail(project_name):
 
 # Run the Flask development server
 if __name__ == "__main__":
-    app.run(debug=True)
+    port = int(os.environ.get("PORT" , 4000))
+    app.run(host="0.0.0.0" , port=port)
