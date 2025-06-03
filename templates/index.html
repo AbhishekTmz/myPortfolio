@@ -14,6 +14,7 @@
     <link rel="stylesheet" href="static/css/owl.theme.default.min.css">
     <link rel="stylesheet" href="static/css/projcect.css">
     <link rel="stylesheet" href="static/css/skills.css">
+    <link rel="stylesheet" href="static/css/AIchat.css">
     <!-- MAIN STYLE -->
     <link rel="stylesheet" href="static/css/tooplate-style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
@@ -302,6 +303,29 @@
         </div>
       </div>
     </section>
+<!-- Floating Chatbot UI -->
+<!-- Floating Chatbot UI -->
+<div id="chatbot-wrapper">
+  <button id="chatbot-toggle" title="Chat with me!">
+    <i class="fas fa-comments"></i>
+  </button>
+
+  <div id="chatbot-box" class="hidden">
+    <div class="chatbot-header">
+      <span>AI Abhishek 🤖</span>
+      <button class="close-btn" title="Close chat">&times;</button> <!-- ✅ Remove inline onclick -->
+    </div>
+    <div id="chatbot-messages" class="chatbot-messages"></div>
+    <input
+      type="text"
+      id="chatbot-input"
+      placeholder="Ask me anything..."
+    />
+  </div>
+</div>
+
+
+
 
     <!-- FOOTER -->
      <footer class="footer py-5">
@@ -324,6 +348,7 @@
     <script src="static/js/owl.carousel.min.js"></script>
     <script src="static/js/smoothscroll.js"></script>
     <script src="static/js/custom.js"></script>
+    <script src="static/js/AiChatscript.js"></script>
 
   </body>
 </html>

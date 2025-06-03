@@ -1,12 +1,14 @@
 # Import necessary modules
-from flask import Flask, render_template
+from flask import Flask, render_template , request , jsonify
 from project_data import projects  # Importing project data from external file
 from skills import skills 
+from ai_persona import AIPersona
 import os         # Importing skills data from external file
 
 # Create the Flask application instance
 app = Flask(__name__)
 
+ai_bot = AIPersona()
 # Define the home route
 @app.route("/")
 def index():
@@ -25,6 +27,14 @@ def project_detail(project_name):
     else:
         # If not found, return a simple message
         return "Project not found"
+
+@app.route("/chat", methods=["POST"])
+def chat():
+    user_input = request.json.get("message", "")
+    if not user_input:
+        return jsonify({"error": "No message provided"}), 400
+    return jsonify({"response": ai_bot.get_response(user_input)})
+
 
 # Run the Flask development server
 if __name__ == "__main__":
